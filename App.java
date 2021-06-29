@@ -2,18 +2,22 @@ package com.example.astrophoto;
 
 import android.app.Application;
 
+import com.example.astrophoto.api.NasaService;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
 public class App extends Application {
 
     private NasaService nasaService;
-    private RoscosmosService roscosmosService;
+    //private RoscosmosService roscosmosService;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         nasaService = new NasaService();
-
-        roscosmosService = new RoscosmosService();
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory(true).build();
@@ -29,7 +33,4 @@ public class App extends Application {
         return nasaService;
     }
 
-    public RoscosmosService getRoscosmosService() {
-        return roscosmosService;
-    }
 }
